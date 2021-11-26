@@ -41,26 +41,3 @@ void	img_check(t_sys *sys)
 	if (sys->obj.img_exit == NULL)
 		ft_error("=== error : exit image ===\n", 27);
 }
-
-void	put_img(t_sys *sys, int i, int j)
-{
-	if (sys->map[i][j] == '1')
-		put_wall(sys, j, i);
-	else if (sys->map[i][j] == '0')
-		put_tile(sys, j, i);
-	else if (sys->map[i][j] == 'P')
-	{
-		put_tile(sys, j, i);
-		put_player(sys, j, i);
-		sys->p_row = i;
-		sys->p_col = j;
-	}
-	else if (sys->map[i][j] == 'C')
-	{
-		put_tile(sys, j, i);
-		put_item(sys, j, i);
-		(sys->item)++;
-	}
-	else if (sys->map[i][j] == 'E')
-		put_exit(sys, j, i);
-}

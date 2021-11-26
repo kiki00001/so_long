@@ -52,12 +52,12 @@ void	so_long(char *mapFile)
 {
 	t_sys	sys;
 
-	map_init(&sys, mapFile);
-	map_error_check(&sys);
-	win_init(&sys);
-	img_init(&sys);
-	img_check(&sys);
-	map_set(&sys);
+	map_init(&sys, mapFile);	//map 메모리 할당 , map 구성
+	map_error_check(&sys);		//map 에러 체크
+	win_init(&sys);				//mlx 연결 초기화 및 윈도우 창 생성 
+	img_init(&sys);				//이미지 초기화
+	img_check(&sys);			//이미지 에러 체크
+	map_set(&sys);				//map 구현
 	mlx_hook(sys.win, KEY_PRESS, 0, &deal_key, &sys);
 	mlx_hook(sys.win, KEY_EXIT, 0, &ft_exit, &sys);
 	mlx_loop(sys.mlx);
